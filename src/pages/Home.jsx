@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Flame, Star, Coins, Gamepad2, FileText, Sparkles, LineChart, ChevronRight, Bell, HeartHandshake } from 'lucide-react';
 import { useApp } from '../context/AppContext';
-import { AVATARS, WORLDS } from '../data/mockData';
+import { AVATARS } from '../data/mockData';
 import AvatarIcon from '../components/AvatarIcon';
 import MissionCard from '../components/MissionCard';
 import RewardChip from '../components/RewardChip';
@@ -60,15 +60,15 @@ export default function Home() {
 
       <div className="px-5 mb-6">
         <button
-          onClick={() => navigate('/companion')}
+          onClick={() => navigate('/smart-learning-support')}
           className="w-full text-left bg-teal-light rounded-2xl p-4 flex items-center gap-3 active:scale-95 transition-transform"
         >
           <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center flex-shrink-0">
             <HeartHandshake size={21} className="text-teal" strokeWidth={1.8} />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-display font-bold text-[13.5px] text-ink">Learning Companion</p>
-            <p className="text-[11px] font-semibold text-ink-soft">Support that adapts to how you're feeling</p>
+            <p className="font-display font-bold text-[13.5px] text-ink">Smart Learning Support</p>
+            <p className="text-[11px] font-semibold text-ink-soft">Optional support that adapts while you learn</p>
           </div>
           <ChevronRight size={18} className="text-ink-faint flex-shrink-0" />
         </button>

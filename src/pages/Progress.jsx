@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Flame, TrendingUp, Clock, CheckCircle2, ChevronRight, Sparkles, Route } from 'lucide-react';
+import { TrendingUp, Clock, CheckCircle2, ChevronRight, Sparkles, Route } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { SKILLS, FOCUS_SKILLS } from '../data/mockData';
 import SkillCard from '../components/SkillCard';

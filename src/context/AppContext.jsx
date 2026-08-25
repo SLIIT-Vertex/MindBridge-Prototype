@@ -84,6 +84,7 @@ export function AppProvider({ children }) {
   );
 }
 
+// eslint-disable-next-line react/only-export-components -- provider and hook intentionally share this prototype context module.
 export function useApp() {
   return useContext(AppContext);
 }

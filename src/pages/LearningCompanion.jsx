@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { Eye, Move, ScanFace, Compass, Timer, Repeat2, XCircle, MousePointerClick, TrendingUp, SlidersHorizontal } from 'lucide-react';
 import { useApp } from '../context/AppContext';
-import { LEARNER_STATE_CONTENT, VISUAL_SIGNALS, BEHAVIOUR_SIGNALS } from '../data/tutorScripts';
+import { VISUAL_SIGNALS, BEHAVIOUR_SIGNALS } from '../data/tutorScripts';
+import { LEARNER_STATES } from '../data/learnerStateMockData';
 import Mascot from '../components/Mascot';
 import AppHeader from '../components/AppHeader';
 import StateSupportCard from '../components/StateSupportCard';
@@ -11,18 +11,18 @@ import StateSupportCard from '../components/StateSupportCard';
 const VISUAL_ICONS = [Eye, Compass, Move, ScanFace];
 const BEHAVIOUR_ICONS = [Timer, XCircle, Repeat2, MousePointerClick, TrendingUp];
 
-const STATE_MOOD = { engaged: 'excited', confused: 'thinking', frustrated: 'calm', low: 'sleepy' };
-const STATE_DOT = { engaged: 'bg-success', confused: 'bg-orange', frustrated: 'bg-primary', low: 'bg-teal' };
+const STATE_MOOD = { engaged: 'excited', confusion: 'thinking', frustration: 'calm', low_alertness: 'sleepy' };
+const STATE_DOT = { engaged: 'bg-success', confusion: 'bg-orange', frustration: 'bg-primary', low_alertness: 'bg-teal' };
 
 export default function LearningCompanion() {
   const navigate = useNavigate();
   const { learnerState, setLearnerState, visualSupport } = useApp();
   const [showDemo, setShowDemo] = useState(false);
-  const content = LEARNER_STATE_CONTENT[learnerState];
+  const content = LEARNER_STATES[learnerState] || LEARNER_STATES.engaged;
 
   function handleAction(id) {
-    if (id === 'hint') navigate('/hint-session');
-    if (id === 'break' || id === 'break2') setLearnerState('engaged');
+    if (id === 'help') navigate('/hint-session');
+    if (id === 'break' || id === 'pause' || id === 'water') navigate('/break-support');
     if (id === 'retry' || id === 'continue') setLearnerState('engaged');
     if (id === 'easier') setLearnerState('engaged');
   }
@@ -53,7 +53,7 @@ export default function LearningCompanion() {
               <p className="text-[10.5px] font-display font-bold text-white/70 uppercase tracking-wide">Presenter Demo Controls</p>
             </div>
             <div className="grid grid-cols-2 gap-2">
-              {Object.keys(LEARNER_STATE_CONTENT).map((key) => (
+              {Object.keys(LEARNER_STATES).map((key) => (
                 <button
                   key={key}
                   onClick={() => setLearnerState(key)}
@@ -61,7 +61,7 @@ export default function LearningCompanion() {
                     learnerState === key ? 'bg-white text-ink' : 'bg-white/10 text-white'
                   }`}
                 >
-                  {key === 'low' ? 'Low Alertness' : key}
+                  {LEARNER_STATES[key].label}
                 </button>
               ))}
             </div>

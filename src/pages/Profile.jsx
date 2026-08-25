@@ -111,7 +111,7 @@ function RowToggle({ icon: Icon, label, value, onChange }) {
   );
 }
 
-function RowNav({ icon: Icon, label, onClick, last }) {
+function RowNav({ icon: Icon, label, onClick }) {
   return (
     <button onClick={onClick} className="w-full flex items-center justify-between px-4 py-3.5">
       <div className="flex items-center gap-3">

@@ -53,7 +53,7 @@ export default function WorldDetail() {
                 </span>
 
                 <button
-                  onClick={() => m.status !== 'locked' && navigate('/minigame')}
+                  onClick={() => m.status !== 'locked' && navigate('/smart-learning-support')}
                   disabled={m.status === 'locked'}
                   className={`w-full text-left bg-white rounded-2xl p-4 card-shadow flex items-center justify-between ${
                     m.status === 'locked' ? 'opacity-55' : 'active:scale-95 transition-transform'

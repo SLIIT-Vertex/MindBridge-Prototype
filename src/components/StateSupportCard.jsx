@@ -9,7 +9,7 @@ const TONE_STYLES = {
 };
 
 export default function StateSupportCard({ content, onAction, visible = true }) {
-  const tone = TONE_STYLES[content.dotColor] || TONE_STYLES.primary;
+  const tone = TONE_STYLES[content.dotColor || content.tone] || TONE_STYLES.primary;
 
   return (
     <AnimatePresence>
@@ -29,12 +29,12 @@ export default function StateSupportCard({ content, onAction, visible = true }) 
             <p className="font-display font-bold text-[14.5px]" style={{ color: tone.text }}>{content.title}</p>
             <p className="text-[12.5px] font-medium text-ink-soft mt-0.5">{content.body}</p>
             {content.actions?.length > 0 && (
-              <div className="flex gap-2 mt-3">
+              <div className="flex flex-wrap gap-2 mt-3">
                 {content.actions.map((a) => (
                   <button
                     key={a.id}
                     onClick={() => onAction?.(a.id)}
-                    className={`text-[12px] font-display font-bold rounded-full px-3.5 py-2 active:scale-95 transition-transform ${
+                    className={`min-h-10 text-[11.5px] font-display font-bold rounded-full px-3.5 py-2 active:scale-95 transition-transform ${
                       a.style === 'primary' ? 'text-white' : 'bg-white/80 text-ink'
                     }`}
                     style={a.style === 'primary' ? { background: tone.text } : {}}

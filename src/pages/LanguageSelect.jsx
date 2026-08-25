@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { Globe2 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import LanguageSelector from '../components/LanguageSelector';

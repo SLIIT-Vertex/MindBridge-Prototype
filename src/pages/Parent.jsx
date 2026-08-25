@@ -1,10 +1,12 @@
-import { Clock, Target, TrendingUp, TrendingDown, Lightbulb } from 'lucide-react';
+import { Clock, Target, TrendingUp, TrendingDown, Lightbulb, HeartPulse, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { PARENT_SUMMARY } from '../data/mockData';
 import AppHeader from '../components/AppHeader';
 
 export default function Parent() {
   const { child } = useApp();
+  const navigate = useNavigate();
 
   return (
     <div className="pb-8 bg-cream-deep min-h-dvh">
@@ -12,6 +14,21 @@ export default function Parent() {
 
       <div className="px-5 mt-2">
         <h2 className="font-display font-extrabold text-xl text-ink mb-5">{child.name}'s Learning Summary</h2>
+
+        <button
+          type="button"
+          onClick={() => navigate('/learner-state-insights')}
+          className="w-full bg-teal-light rounded-2xl p-4 mb-5 flex items-center gap-3 text-left active:scale-[0.98] transition-transform"
+        >
+          <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center flex-shrink-0 card-shadow">
+            <HeartPulse size={20} className="text-teal" strokeWidth={1.8} />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="font-display font-bold text-[14px] text-ink">Learning Pattern Insights</p>
+            <p className="text-[11px] font-semibold text-ink-soft mt-0.5">Recent sessions, support moments and recurring patterns</p>
+          </div>
+          <ChevronRight size={18} className="text-teal flex-shrink-0" />
+        </button>
 
         <div className="grid grid-cols-2 gap-3 mb-5">
           <StatCard icon={Clock} value={PARENT_SUMMARY.learningTime} label="Learning time this week" />

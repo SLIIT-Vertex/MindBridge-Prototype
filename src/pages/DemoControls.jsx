@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import { FlaskConical, Check } from 'lucide-react';
 import { useApp } from '../context/AppContext';
-import AppHeader from '../components/AppHeader';
 
-const STATES = ['engaged', 'confused', 'frustrated', 'low'];
-const STATE_LABELS = { engaged: 'Engaged', confused: 'Confused', frustrated: 'Frustrated', low: 'Low Alertness' };
+const STATES = ['engaged', 'confusion', 'frustration', 'low_alertness'];
+const STATE_LABELS = {
+  engaged: 'Engaged',
+  confusion: 'Possible Confusion',
+  frustration: 'Possible Frustration',
+  low_alertness: 'Low Alertness',
+};
 const PERFORMANCE = ['Strong', 'Medium', 'Needs Support'];
 const SPEEDS = ['Fast', 'Normal', 'Slow'];
 

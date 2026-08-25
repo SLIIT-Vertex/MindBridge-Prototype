@@ -35,6 +35,11 @@ import Privacy from './pages/Privacy';
 import Parent from './pages/Parent';
 import Notifications from './pages/Notifications';
 import DemoControls from './pages/DemoControls';
+import SmartLearningSupport from './pages/SmartLearningSupport';
+import BreakSupport from './pages/BreakSupport';
+import SessionSummary from './pages/SessionSummary';
+import LearnerStateInsights from './pages/LearnerStateInsights';
+import PatternDetails from './pages/PatternDetails';
 
 import './index.css';
 
@@ -69,6 +74,11 @@ export default function App() {
               <Route path="/parent" element={<Parent />} />
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/demo-controls" element={<DemoControls />} />
+              <Route path="/smart-learning-support" element={<SmartLearningSupport />} />
+              <Route path="/break-support" element={<BreakSupport />} />
+              <Route path="/session-summary" element={<SessionSummary />} />
+              <Route path="/learner-state-insights" element={<LearnerStateInsights />} />
+              <Route path="/pattern-details" element={<PatternDetails />} />
             </Route>
 
             <Route element={<MainLayout />}>
@@ -78,6 +88,7 @@ export default function App() {
               <Route path="/mindy" element={<Mindy />} />
               <Route path="/progress" element={<Progress />} />
               <Route path="/companion" element={<LearningCompanion />} />
+              <Route path="/profile" element={<Profile />} />
             </Route>
           </Routes>
         </div>

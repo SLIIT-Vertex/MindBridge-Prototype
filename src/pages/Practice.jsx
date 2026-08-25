@@ -37,7 +37,7 @@ export default function Practice() {
 
       <div className="flex flex-col gap-3 mt-6">
         <button
-          onClick={() => navigate('/minigame')}
+          onClick={() => navigate('/smart-learning-support')}
           className="bg-primary text-white font-display font-bold text-[14.5px] rounded-full py-4 flex items-center justify-center gap-2 active:scale-95 transition-transform"
         >
           Start Digital Practice
