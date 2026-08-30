@@ -1,4 +1,4 @@
-import { FileText, Clock, ListChecks } from 'lucide-react';
+import { FileText, Clock, ListChecks, Languages } from 'lucide-react';
 
 export default function PaperCard({ paper }) {
   return (
@@ -9,12 +9,17 @@ export default function PaperCard({ paper }) {
           <FileText size={22} />
         </div>
         <h3 className="font-display font-extrabold text-lg mb-1">{paper.title}</h3>
-        <p className="text-[12.5px] font-medium opacity-90 mb-4">Generated for you</p>
-        <div className="flex gap-4 text-[12.5px] font-semibold">
+        <p className="text-[12.5px] font-medium opacity-90 mb-4">
+          Generated {paper.generatedOn} · {paper.weakAreaWeight}% weak areas / {paper.normalWeight}% revision
+        </p>
+        <div className="flex flex-wrap gap-3 text-[12.5px] font-semibold">
           <span className="flex items-center gap-1"><ListChecks size={14} />{paper.questions} Questions</span>
           <span className="flex items-center gap-1"><Clock size={14} />{paper.minutes} Minutes</span>
+          <span className="flex items-center gap-1"><Languages size={14} />3 Languages</span>
         </div>
-        <span className="inline-block mt-3 bg-white/20 rounded-full px-3 py-1 text-[11px] font-bold">{paper.difficulty} Difficulty</span>
+        <span className="inline-block mt-3 bg-white/20 rounded-full px-3 py-1 text-[11px] font-bold">
+          {paper.difficulty} · {paper.marks} marks
+        </span>
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ import Practice from './pages/Practice';
 import PrintablePaper from './pages/PrintablePaper';
 import PaperUpload from './pages/PaperUpload';
 import PaperResults from './pages/PaperResults';
+import PastPapers from './pages/PastPapers';
 
 import Mindy from './pages/Mindy';
 import HintSession from './pages/HintSession';
@@ -61,6 +62,7 @@ export default function App() {
               <Route path="/printable-paper" element={<PrintablePaper />} />
               <Route path="/paper-upload" element={<PaperUpload />} />
               <Route path="/paper-results" element={<PaperResults />} />
+              <Route path="/past-papers" element={<PastPapers />} />
 
               <Route path="/hint-session" element={<HintSession />} />
 

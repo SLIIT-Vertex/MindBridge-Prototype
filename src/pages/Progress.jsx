@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { TrendingUp, Clock, CheckCircle2, ChevronRight, Sparkles, Route } from 'lucide-react';
 import { useApp } from '../context/AppContext';
-import { SKILLS, FOCUS_SKILLS } from '../data/mockData';
+import { SKILLS, FOCUS_SKILLS, SKILL_MASTERY_DASHBOARD } from '../data/mockData';
 import SkillCard from '../components/SkillCard';
 import ProgressBar from '../components/ProgressBar';
 
@@ -49,6 +49,25 @@ export default function Progress() {
               >
                 Practice
               </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="bg-white rounded-2xl p-5 card-shadow mb-5">
+        <p className="font-display font-bold text-[14px] text-ink mb-1">Mastery Map</p>
+        <p className="text-[11.5px] font-semibold text-ink-soft mb-4">Updated after games and scanned weekly papers</p>
+        <div className="flex flex-col gap-3">
+          {SKILL_MASTERY_DASHBOARD.map((item) => (
+            <div key={item.skill}>
+              <div className="flex items-center justify-between gap-3 mb-1.5">
+                <div className="min-w-0">
+                  <p className="font-display font-bold text-[12.5px] text-ink">{item.skill}</p>
+                  <p className="text-[10.5px] font-semibold text-ink-soft">{item.status}</p>
+                </div>
+                <span className="font-display font-extrabold text-[12.5px]" style={{ color: item.color }}>{item.mastery}%</span>
+              </div>
+              <ProgressBar pct={item.mastery} color={item.color} height={7} />
             </div>
           ))}
         </div>

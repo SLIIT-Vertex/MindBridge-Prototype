@@ -91,3 +91,63 @@ body {
 .card-shadow-lg {
   box-shadow: 0 8px 16px rgba(46,42,69,0.06), 0 20px 40px rgba(46,42,69,0.10);
 }
+
+.paper-sheet {
+  width: 100%;
+  min-height: 560px;
+  padding: 22px;
+  font-family: "Times New Roman", "Noto Serif Sinhala", "Noto Serif Tamil", serif;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  html, body, #root {
+    display: block;
+    height: auto;
+    background: white;
+  }
+
+  body {
+    overscroll-behavior: auto;
+  }
+
+  .app-frame {
+    max-width: none;
+    width: auto;
+    height: auto;
+    min-height: auto;
+    max-height: none;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+    background: white;
+  }
+
+  .paper-sheet {
+    width: 100%;
+    min-height: auto;
+    padding: 0;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  .print\:px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .print\:shadow-none {
+    box-shadow: none !important;
+  }
+
+  .print\:border-0 {
+    border: 0 !important;
+  }
+}
