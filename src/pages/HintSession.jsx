@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { PartyPopper } from 'lucide-react';
+import { PartyPopper, Send } from 'lucide-react';
 import { HINT_SESSION } from '../data/tutorScripts';
 import { useApp } from '../context/AppContext';
+import { SUPPORT_TYPE_LABELS } from '../data/learner-state/supportCopy';
 import Mascot from '../components/Mascot';
 import AppHeader from '../components/AppHeader';
 import TutorBubble from '../components/TutorBubble';
@@ -12,10 +13,16 @@ const ANSWER_OPTIONS = ['1/2', '1', '4/8', '2'];
 
 export default function HintSession() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { addXp } = useApp();
   const [hintsShown, setHintsShown] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [correct, setCorrect] = useState(false);
+
+  // Present when the learner-state component requested this support rather than
+  // the child opening guided practice themselves. The tutor still writes every
+  // word below; the request only carries the situation that prompted it.
+  const supportRequest = location.state?.supportRequest ?? null;
 
   function pick(option) {
     setAnswered(true);
@@ -30,7 +37,20 @@ export default function HintSession() {
       <AppHeader title="Guided Practice" />
 
       <div className="px-5 flex-1 flex flex-col gap-4 mt-2">
+        {supportRequest && (
+          <div className="bg-primary-light rounded-2xl px-3.5 py-2.5 flex items-center gap-2">
+            <Send size={13} className="text-primary flex-shrink-0" aria-hidden="true" />
+            <p className="text-[10.5px] font-semibold text-ink-soft leading-snug">
+              Support context received from learner-state monitoring:{' '}
+              <span className="font-display font-bold text-ink">
+                {SUPPORT_TYPE_LABELS[supportRequest.supportType] ?? 'Request hint'}
+              </span>
+            </p>
+          </div>
+        )}
+
         <div className="bg-white rounded-2xl p-5 card-shadow-lg text-center">
+
           <p className="text-[11.5px] font-bold text-ink-soft mb-2">Solve together</p>
           <p className="font-display font-extrabold text-2xl text-ink">{HINT_SESSION.question}</p>
         </div>

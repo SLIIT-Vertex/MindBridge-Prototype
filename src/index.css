@@ -47,9 +47,15 @@ body {
   font-family: var(--font-body);
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior: none;
+  /* A stray wide child must never make the whole page pan sideways on a phone. */
+  overflow-x: hidden;
 }
 
 * { box-sizing: border-box; }
+
+/* Long unbroken strings (a skill id, an email, a pasted url) are the usual cause
+   of horizontal overflow at 320px. Wrap them rather than widening the layout. */
+p, span, h1, h2, h3, li, button { overflow-wrap: break-word; }
 
 .font-display { font-family: var(--font-display); }
 
@@ -65,6 +71,15 @@ body {
   position: relative;
   overflow-x: hidden;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.02);
+  /* Keeps content clear of the notch and the iOS home indicator. On desktop the
+     insets are 0, so the phone-frame mock below is unaffected. */
+  padding-top: env(safe-area-inset-top);
+}
+
+/* Small phones (iPhone SE, older Androids). The layout holds at 320px, but the
+   default gutter eats too much of it, so tighten only the outermost padding. */
+@media (max-width: 359px) {
+  .app-frame .px-5 { padding-left: 1rem; padding-right: 1rem; }
 }
 
 @media (min-width: 768px) {
@@ -75,12 +90,35 @@ body {
     background: #E9E6F5;
   }
   .app-frame {
-    min-height: 844px;
-    max-height: 90vh;
-    height: 844px;
+    /* WIDTH: an explicit basis, not `width: 100%`.
+       html/body/#root are all flex containers above this element, and inside a
+       flex row with an indefinite width a percentage width resolves to
+       shrink-to-fit. The frame therefore collapsed to its own content width —
+       430px on content-heavy screens, but only 183px on the splash, whose
+       widest item is the word "MindBridge". */
+    flex: 0 0 430px;
+    width: 430px;
+
+    /* HEIGHT: one clamped value.
+       The previous rule set min-height: 844px alongside max-height: 90vh, and
+       min-height always wins over max-height in CSS, so the frame stayed 844px
+       tall and overflowed any viewport shorter than ~938px. With the flex
+       centring above, the overflow was clipped at the top and unreachable. */
+    height: min(844px, calc(100dvh - 48px));
+    min-height: 0;
+    max-height: none;
+
     border-radius: 44px;
     box-shadow: 0 30px 70px -20px rgba(46, 42, 69, 0.35), 0 0 0 10px #1E1B33, 0 0 0 12px #38344f;
     overflow-y: auto;
+  }
+
+  /* Inside the mock the FRAME is the viewport, but `dvh` still measures the
+     browser window, so every full-height screen sat 48px taller than the frame
+     and left a strip of the frame background showing under it. Re-point the
+     full-height utility at the frame. */
+  .app-frame .min-h-dvh {
+    min-height: 100%;
   }
 }
 

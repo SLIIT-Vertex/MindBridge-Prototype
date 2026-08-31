@@ -8,7 +8,7 @@ export default function LanguageSelector({ value, onChange, compact = false }) {
           <button
             key={l.code}
             onClick={() => onChange(l.code)}
-            className={`px-3 py-1.5 rounded-full text-[12px] font-display font-bold transition-colors ${
+            className={`min-h-11 px-3 rounded-full text-[12px] font-display font-bold transition-colors ${
               value === l.code ? 'bg-primary text-white' : 'text-ink-soft'
             }`}
           >

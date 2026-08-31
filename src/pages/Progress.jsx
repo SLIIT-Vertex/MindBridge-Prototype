@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { TrendingUp, Clock, CheckCircle2, ChevronRight, Sparkles, Route } from 'lucide-react';
+import { TrendingUp, Clock, CheckCircle2, ChevronRight, Sparkles, HeartHandshake } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { SKILLS, FOCUS_SKILLS, SKILL_MASTERY_DASHBOARD } from '../data/mockData';
 import SkillCard from '../components/SkillCard';
@@ -45,7 +45,7 @@ export default function Progress() {
               </div>
               <button
                 onClick={() => navigate('/learn')}
-                className="flex-shrink-0 bg-primary text-white font-display font-bold text-[11px] rounded-full px-3.5 py-2.5"
+                className="flex-shrink-0 min-h-11 bg-primary text-white font-display font-bold text-[11px] rounded-full px-4"
               >
                 Practice
               </button>
@@ -74,11 +74,14 @@ export default function Progress() {
       </div>
 
       <div className="flex flex-col gap-3">
+        {/* The technical pipeline view moved to the Parent Area: this tab is
+            a child surface, and a nine-year-old should not be one tap from
+            service names and reliability figures. */}
         <NavCard
-          icon={Route}
-          title="How MindBridge Understands Learning"
-          subtitle="See the research behind adaptive support"
-          onClick={() => navigate('/state-fusion')}
+          icon={HeartHandshake}
+          title="How Mindy Helps"
+          subtitle="Why help shows up when it does"
+          onClick={() => navigate('/companion')}
         />
         <NavCard
           icon={TrendingUp}

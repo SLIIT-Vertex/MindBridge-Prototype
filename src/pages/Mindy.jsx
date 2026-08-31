@@ -103,7 +103,7 @@ export default function Mindy() {
 
       <div className="px-5 pt-4">
         <div className="flex items-center gap-2 bg-white rounded-full card-shadow px-2 py-2">
-          <button className="w-9 h-9 rounded-full bg-cream-deep flex items-center justify-center flex-shrink-0">
+          <button className="w-11 h-11 rounded-full bg-cream-deep flex items-center justify-center flex-shrink-0">
             <Mic size={16} className="text-ink-soft" />
           </button>
           <input
@@ -111,11 +111,11 @@ export default function Mindy() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && send(input)}
             placeholder="Ask Mindy anything..."
-            className="flex-1 bg-transparent outline-none text-[13px] font-medium text-ink"
+            className="flex-1 min-w-0 bg-transparent outline-none text-[14px] font-medium text-ink py-3"
           />
           <button
             onClick={() => send(input)}
-            className="w-9 h-9 rounded-full bg-primary flex items-center justify-center flex-shrink-0 active:scale-90 transition-transform"
+            className="w-11 h-11 rounded-full bg-primary flex items-center justify-center flex-shrink-0 active:scale-90 transition-transform"
           >
             <Send size={15} color="white" />
           </button>

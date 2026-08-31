@@ -74,7 +74,7 @@ export default function Practice() {
           <button
             type="button"
             onClick={() => navigate('/past-papers')}
-            className="bg-primary text-white rounded-full px-3.5 py-2.5 font-display font-bold text-[11px] flex items-center gap-1 active:scale-95 transition-transform"
+            className="bg-primary text-white rounded-full px-4 min-h-11 font-display font-bold text-[11px] flex items-center gap-1 active:scale-95 transition-transform flex-shrink-0"
           >
             View
             <ChevronRight size={14} />

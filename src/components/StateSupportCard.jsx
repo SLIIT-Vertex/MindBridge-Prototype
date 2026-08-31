@@ -22,19 +22,25 @@ export default function StateSupportCard({ content, onAction, visible = true }) 
           className="rounded-2xl p-4 card-shadow-lg flex items-start gap-3"
           style={{ background: tone.bg }}
         >
-          <div className="w-11 h-11 rounded-full bg-white/70 flex items-center justify-center flex-shrink-0">
-            <Mascot size={34} mood={tone.mood} animate={false} />
+          <div className="w-12 h-12 rounded-full bg-white/70 flex items-center justify-center flex-shrink-0">
+            <Mascot size={38} mood={tone.mood} animate={false} />
           </div>
-          <div className="flex-1">
-            <p className="font-display font-bold text-[14.5px]" style={{ color: tone.text }}>{content.title}</p>
-            <p className="text-[12.5px] font-medium text-ink-soft mt-0.5">{content.body}</p>
+          {/* min-w-0 so a long label wraps instead of pushing the card wider
+              than the 360px phones this is read on. */}
+          <div className="flex-1 min-w-0">
+            <p className="font-display font-bold text-[16px] leading-snug" style={{ color: tone.text }}>
+              {content.title}
+            </p>
+            <p className="text-[13.5px] font-semibold text-ink-soft mt-1 leading-relaxed">
+              {content.body}
+            </p>
             {content.actions?.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-3">
+              <div className="flex flex-wrap gap-2 mt-3.5">
                 {content.actions.map((a) => (
                   <button
                     key={a.id}
                     onClick={() => onAction?.(a.id)}
-                    className={`min-h-10 text-[11.5px] font-display font-bold rounded-full px-3.5 py-2 active:scale-95 transition-transform ${
+                    className={`min-h-12 text-[13.5px] font-display font-bold rounded-full px-4 py-2.5 active:scale-95 transition-transform ${
                       a.style === 'primary' ? 'text-white' : 'bg-white/80 text-ink'
                     }`}
                     style={a.style === 'primary' ? { background: tone.text } : {}}

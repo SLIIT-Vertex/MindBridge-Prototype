@@ -31,7 +31,7 @@ export default function Home() {
             <p className="text-[12.5px] font-semibold text-ink-soft">Ready for today's learning session?</p>
           </div>
         </div>
-        <button onClick={() => navigate('/notifications')} className="relative w-10 h-10 rounded-full bg-white card-shadow flex items-center justify-center active:scale-90 transition-transform">
+        <button onClick={() => navigate('/notifications')} className="relative w-11 h-11 rounded-full bg-white card-shadow flex items-center justify-center active:scale-90 transition-transform flex-shrink-0">
           <Bell size={18} className="text-ink" />
           <span className="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-coral" />
         </button>

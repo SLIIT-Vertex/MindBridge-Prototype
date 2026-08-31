@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Coins, Star, Flame, ChevronRight, Volume2, Music2, Bell, Accessibility, ShieldCheck, ShieldQuestion, Info, LogOut, Palette, Trophy, Gift, FlaskConical } from 'lucide-react';
+import { Coins, Star, Flame, ChevronRight, Volume2, Music2, Bell, Accessibility, ShieldCheck, ShieldQuestion, Info, LogOut, Palette, Trophy, Gift } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { AVATARS } from '../data/mockData';
 import AvatarIcon from '../components/AvatarIcon';
@@ -59,8 +59,7 @@ export default function Profile() {
 
       <SettingsGroup title="Family & Safety">
         <RowNav icon={ShieldCheck} label="Parent Area" onClick={() => setPinOpen(true)} />
-        <RowNav icon={ShieldQuestion} label="Your Learning Privacy" onClick={() => navigate('/privacy')} />
-        <RowNav icon={FlaskConical} label="Research Demo Controls" onClick={() => navigate('/demo-controls')} />
+        <RowNav icon={ShieldQuestion} label="Camera & Privacy" onClick={() => navigate('/privacy')} />
       </SettingsGroup>
 
       <SettingsGroup title="About">
@@ -101,11 +100,18 @@ function RowToggle({ icon: Icon, label, value, onChange }) {
         <Icon size={17} className="text-ink-soft" />
         <span className="text-[13px] font-semibold text-ink">{label}</span>
       </div>
+      {/* Padded hit area around a deliberately small track: 44px to tap, 28px to look at. */}
       <button
+        type="button"
+        role="switch"
+        aria-checked={value}
+        aria-label={label}
         onClick={() => onChange(!value)}
-        className={`w-11 h-6 rounded-full relative transition-colors ${value ? 'bg-primary' : 'bg-cream-deep'}`}
+        className="p-2 -m-2 flex-shrink-0"
       >
-        <span className={`absolute top-0.5 w-5 h-5 rounded-full bg-white transition-all shadow ${value ? 'left-[22px]' : 'left-0.5'}`} />
+        <span className={`block w-12 h-7 rounded-full relative transition-colors ${value ? 'bg-primary' : 'bg-cream-deep'}`}>
+          <span className={`absolute top-0.5 w-6 h-6 rounded-full bg-white transition-all shadow ${value ? 'left-[22px]' : 'left-0.5'}`} />
+        </span>
       </button>
     </div>
   );

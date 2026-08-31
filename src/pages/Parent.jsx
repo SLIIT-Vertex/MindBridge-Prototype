@@ -1,4 +1,4 @@
-import { Clock, Target, TrendingUp, TrendingDown, Lightbulb, HeartPulse, ChevronRight, FileText, Printer, Camera } from 'lucide-react';
+import { Clock, Target, TrendingUp, TrendingDown, Lightbulb, HeartPulse, ChevronRight, FileText, Printer, Camera, Route, FlaskConical } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { PARENT_SUMMARY, PRACTICE_PAPER, SKILL_MASTERY_DASHBOARD } from '../data/mockData';
@@ -19,7 +19,7 @@ export default function Parent() {
         <button
           type="button"
           onClick={() => navigate('/learner-state-insights')}
-          className="w-full bg-teal-light rounded-2xl p-4 mb-5 flex items-center gap-3 text-left active:scale-[0.98] transition-transform"
+          className="w-full bg-teal-light rounded-2xl p-4 mb-3 flex items-center gap-3 text-left active:scale-[0.98] transition-transform"
         >
           <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center flex-shrink-0 card-shadow">
             <HeartPulse size={20} className="text-teal" strokeWidth={1.8} />
@@ -30,6 +30,22 @@ export default function Parent() {
           </div>
           <ChevronRight size={18} className="text-teal flex-shrink-0" />
         </button>
+
+        {/* The research surfaces live behind the parent PIN, not on a child tab. */}
+        <div className="grid grid-cols-2 gap-3 mb-5">
+          <AdultCard
+            icon={Route}
+            label="How it works"
+            hint="Full pipeline"
+            onClick={() => navigate('/state-fusion')}
+          />
+          <AdultCard
+            icon={FlaskConical}
+            label="Demo controls"
+            hint="Research prototype"
+            onClick={() => navigate('/demo-controls')}
+          />
+        </div>
 
         <div className="bg-white rounded-2xl p-4 card-shadow-lg mb-5">
           <div className="flex items-start gap-3 mb-4">
@@ -117,6 +133,24 @@ export default function Parent() {
         </div>
       </div>
     </div>
+  );
+}
+
+function AdultCard({ icon: Icon, label, hint, onClick }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="bg-white rounded-2xl p-3.5 card-shadow flex items-center gap-2.5 text-left active:scale-[0.97] transition-transform"
+    >
+      <div className="w-9 h-9 rounded-xl bg-primary-light flex items-center justify-center flex-shrink-0">
+        <Icon size={17} className="text-primary" strokeWidth={1.8} aria-hidden="true" />
+      </div>
+      <div className="min-w-0">
+        <p className="font-display font-bold text-[12px] text-ink leading-snug">{label}</p>
+        <p className="text-[10px] font-semibold text-ink-soft truncate">{hint}</p>
+      </div>
+    </button>
   );
 }
 

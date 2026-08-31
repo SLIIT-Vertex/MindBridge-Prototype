@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- viewport-fit=cover lets the safe-area-inset-* values report real numbers
+         on notched phones. Pinch-zoom is deliberately NOT blocked: a child (or a
+         parent reading the privacy text) must be able to zoom. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#6C5CE7" />
     <title>MindBridge</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

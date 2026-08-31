@@ -28,7 +28,7 @@ export default function MissionCard({ title, subtitle, activityCount, xp, progre
 
         <button
           onClick={onContinue}
-          className="bg-white text-primary-dark font-display font-bold text-[13.5px] rounded-full px-5 py-2.5 flex items-center gap-1.5 active:scale-95 transition-transform"
+          className="bg-white text-primary-dark font-display font-bold text-[13.5px] rounded-full px-5 min-h-11 flex items-center gap-1.5 active:scale-95 transition-transform"
         >
           Continue Mission
           <ArrowRight size={15} strokeWidth={2.6} />
