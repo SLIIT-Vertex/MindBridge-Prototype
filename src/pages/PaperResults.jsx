@@ -84,7 +84,7 @@ export default function PaperResults() {
             ))}
           </div>
           <button
-            onClick={() => navigate('/worlds/number-kingdom')}
+            onClick={() => navigate('/learn')}
             className="w-full bg-primary text-white font-display font-bold text-[13.5px] rounded-full py-3.5 flex items-center justify-center gap-2 active:scale-95 transition-transform"
           >
             Start Recommended Practice

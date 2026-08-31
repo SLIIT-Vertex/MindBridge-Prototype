@@ -95,7 +95,7 @@ export default function ProfileSetup() {
         onClick={start}
         className="bg-primary text-white font-display font-bold text-[15px] rounded-full py-4 disabled:opacity-40 transition-opacity"
       >
-        Start My Adventure
+        Start Learning
       </motion.button>
     </div>
   );

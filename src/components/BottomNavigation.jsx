@@ -4,7 +4,7 @@ import { Home, Gamepad2, FileText, Sparkles, LineChart } from 'lucide-react';
 
 const TABS = [
   { to: '/home', label: 'Home', icon: Home },
-  { to: '/worlds', label: 'Learn', icon: Gamepad2 },
+  { to: '/learn', label: 'Learn', icon: Gamepad2 },
   { to: '/practice', label: 'Practice', icon: FileText },
   { to: '/mindy', label: 'Mindy', icon: Sparkles },
   { to: '/progress', label: 'Progress', icon: LineChart },
