@@ -8,7 +8,7 @@ import MissionCard from '../components/MissionCard';
 import RewardChip from '../components/RewardChip';
 
 const FEATURES = [
-  { key: 'worlds', to: '/worlds', title: 'Play & Learn', subtitle: 'Explore your learning worlds', icon: Gamepad2, color: '#6C5CE7', bg: '#EFECFD' },
+  { key: 'learn', to: '/learn', title: 'Play & Learn', subtitle: 'Curriculum-aligned learning games', icon: Gamepad2, color: '#6C5CE7', bg: '#EFECFD' },
   { key: 'practice', to: '/practice', title: 'Practice Paper', subtitle: 'Your personalized practice is ready', icon: FileText, color: '#3FA9F5', bg: '#E8F5FE' },
   { key: 'mindy', to: '/mindy', title: 'Ask Mindy', subtitle: 'Get hints and explanations', icon: Sparkles, color: '#FF9F5A', bg: '#FFF1E4' },
   { key: 'progress', to: '/progress', title: 'My Progress', subtitle: 'See how much you\'ve improved', icon: LineChart, color: '#16BFA6', bg: '#E4FAF5' },
@@ -28,7 +28,7 @@ export default function Home() {
           </button>
           <div>
             <p className="font-display font-extrabold text-[17px] text-ink leading-tight">Good morning, {child.name}!</p>
-            <p className="text-[12.5px] font-semibold text-ink-soft">Ready for today's learning adventure?</p>
+            <p className="text-[12.5px] font-semibold text-ink-soft">Ready for today's learning session?</p>
           </div>
         </div>
         <button onClick={() => navigate('/notifications')} className="relative w-10 h-10 rounded-full bg-white card-shadow flex items-center justify-center active:scale-90 transition-transform">
@@ -50,7 +50,7 @@ export default function Home() {
           xp={120}
           progress={missionProgress}
           total={3}
-          onContinue={() => navigate('/worlds/number-kingdom')}
+          onContinue={() => navigate('/learn')}
         />
       </div>
 
@@ -101,7 +101,7 @@ export default function Home() {
 function RecommendationCard({ navigate }) {
   return (
     <button
-      onClick={() => navigate('/worlds/number-kingdom')}
+      onClick={() => navigate('/learn')}
       className="w-full text-left bg-white rounded-2xl p-4 card-shadow flex items-center gap-3 active:scale-95 transition-transform"
     >
       <div className="w-12 h-12 rounded-xl bg-orange-light flex items-center justify-center flex-shrink-0">
@@ -109,7 +109,7 @@ function RecommendationCard({ navigate }) {
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-[10.5px] font-bold text-orange uppercase tracking-wide">Recommended for you</p>
-        <p className="font-display font-bold text-[14px] text-ink">Fractions Adventure</p>
+        <p className="font-display font-bold text-[14px] text-ink">Fractions Practice</p>
         <p className="text-[11px] font-semibold text-ink-soft">Based on your latest practice paper &middot; 10 min &middot; +80 XP</p>
       </div>
       <ChevronRight size={18} className="text-ink-faint flex-shrink-0" />

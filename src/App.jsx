@@ -1,5 +1,17 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
+import { AdaptiveLearningProvider } from './context/AdaptiveLearningContext';
+import AdaptiveLearningDevHarness from './pages/adaptive-learning/AdaptiveLearningDevHarness';
+import AdaptiveLearningHome from './pages/adaptive-learning/AdaptiveLearningHome';
+import GeneralIntelligence from './pages/adaptive-learning/GeneralIntelligence';
+import PatternSequenceOverview from './pages/adaptive-learning/PatternSequenceOverview';
+import IndependentBaseline from './pages/adaptive-learning/IndependentBaseline';
+import PatternTemple from './pages/adaptive-learning/PatternTemple';
+import AdaptiveSupport from './pages/adaptive-learning/AdaptiveSupport';
+import IndependentCheck from './pages/adaptive-learning/IndependentCheck';
+import IndependenceResult from './pages/adaptive-learning/IndependenceResult';
+import LearnReward from './pages/adaptive-learning/LearnReward';
+import AdaptiveResearchSummary from './pages/adaptive-learning/AdaptiveResearchSummary';
 import MainLayout from './layouts/MainLayout';
 import PlainLayout from './layouts/PlainLayout';
 
@@ -9,8 +21,6 @@ import LanguageSelect from './pages/LanguageSelect';
 import ProfileSetup from './pages/ProfileSetup';
 
 import Home from './pages/Home';
-import Worlds from './pages/Worlds';
-import WorldDetail from './pages/WorldDetail';
 import MiniGame from './pages/MiniGame';
 
 import Practice from './pages/Practice';
@@ -47,54 +57,73 @@ import './index.css';
 export default function App() {
   return (
     <AppProvider>
-      <HashRouter>
-        <div className="app-frame">
-          <Routes>
-            <Route element={<PlainLayout />}>
-              <Route path="/" element={<Splash />} />
-              <Route path="/onboarding" element={<Onboarding />} />
-              <Route path="/language" element={<LanguageSelect />} />
-              <Route path="/profile-setup" element={<ProfileSetup />} />
+      <AdaptiveLearningProvider>
+        <HashRouter>
+          <div className="app-frame">
+            <Routes>
+              <Route element={<PlainLayout />}>
+                <Route path="/" element={<Splash />} />
+                <Route path="/onboarding" element={<Onboarding />} />
+                <Route path="/language" element={<LanguageSelect />} />
+                <Route path="/profile-setup" element={<ProfileSetup />} />
 
-              <Route path="/worlds/:id" element={<WorldDetail />} />
-              <Route path="/minigame" element={<MiniGame />} />
+                <Route path="/minigame" element={<MiniGame />} />
 
-              <Route path="/printable-paper" element={<PrintablePaper />} />
-              <Route path="/paper-upload" element={<PaperUpload />} />
-              <Route path="/paper-results" element={<PaperResults />} />
-              <Route path="/past-papers" element={<PastPapers />} />
+                <Route path="/printable-paper" element={<PrintablePaper />} />
+                <Route path="/paper-upload" element={<PaperUpload />} />
+                <Route path="/paper-results" element={<PaperResults />} />
+                <Route path="/past-papers" element={<PastPapers />} />
 
-              <Route path="/hint-session" element={<HintSession />} />
+                <Route path="/hint-session" element={<HintSession />} />
 
-              <Route path="/state-fusion" element={<StateFusion />} />
-              <Route path="/patterns" element={<Patterns />} />
-              <Route path="/journey" element={<Journey />} />
-              <Route path="/achievements" element={<Achievements />} />
+                <Route path="/state-fusion" element={<StateFusion />} />
+                <Route path="/patterns" element={<Patterns />} />
+                <Route path="/journey" element={<Journey />} />
+                <Route path="/achievements" element={<Achievements />} />
 
-              <Route path="/avatar-customize" element={<AvatarCustomize />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/parent" element={<Parent />} />
-              <Route path="/notifications" element={<Notifications />} />
-              <Route path="/demo-controls" element={<DemoControls />} />
-              <Route path="/smart-learning-support" element={<SmartLearningSupport />} />
-              <Route path="/break-support" element={<BreakSupport />} />
-              <Route path="/session-summary" element={<SessionSummary />} />
-              <Route path="/learner-state-insights" element={<LearnerStateInsights />} />
-              <Route path="/pattern-details" element={<PatternDetails />} />
-            </Route>
+                <Route path="/avatar-customize" element={<AvatarCustomize />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/parent" element={<Parent />} />
+                <Route path="/notifications" element={<Notifications />} />
+                <Route path="/demo-controls" element={<DemoControls />} />
+                <Route path="/smart-learning-support" element={<SmartLearningSupport />} />
+                <Route path="/break-support" element={<BreakSupport />} />
+                <Route path="/session-summary" element={<SessionSummary />} />
+                <Route path="/learner-state-insights" element={<LearnerStateInsights />} />
+                <Route path="/pattern-details" element={<PatternDetails />} />
 
-            <Route element={<MainLayout />}>
-              <Route path="/home" element={<Home />} />
-              <Route path="/worlds" element={<Worlds />} />
-              <Route path="/practice" element={<Practice />} />
-              <Route path="/mindy" element={<Mindy />} />
-              <Route path="/progress" element={<Progress />} />
-              <Route path="/companion" element={<LearningCompanion />} />
-              <Route path="/profile" element={<Profile />} />
-            </Route>
-          </Routes>
-        </div>
-      </HashRouter>
+                {/* Adaptive Learning — immersive flow screens (no bottom nav). */}
+                <Route path="/learn/baseline" element={<IndependentBaseline />} />
+                <Route path="/learn/temple" element={<PatternTemple />} />
+                <Route path="/learn/support" element={<AdaptiveSupport />} />
+                <Route path="/learn/independent-check" element={<IndependentCheck />} />
+                <Route path="/learn/result" element={<IndependenceResult />} />
+                <Route path="/learn/reward" element={<LearnReward />} />
+                <Route path="/learn/research-summary" element={<AdaptiveResearchSummary />} />
+
+                {/* Adaptive Learning — dev harness for glyphs and the Research View. */}
+                <Route path="/learn/dev" element={<AdaptiveLearningDevHarness />} />
+              </Route>
+
+              <Route element={<MainLayout />}>
+                <Route path="/home" element={<Home />} />
+                <Route path="/practice" element={<Practice />} />
+                <Route path="/mindy" element={<Mindy />} />
+                <Route path="/progress" element={<Progress />} />
+                <Route path="/companion" element={<LearningCompanion />} />
+                <Route path="/profile" element={<Profile />} />
+
+                {/* Adaptive Learning — child navigation (Phase 3). Nested /learn
+                    routes keep the Learn tab highlighted. Later phases add the
+                    remaining /learn/* screens under PlainLayout. */}
+                <Route path="/learn" element={<AdaptiveLearningHome />} />
+                <Route path="/learn/general-intelligence" element={<GeneralIntelligence />} />
+                <Route path="/learn/pattern-sequence" element={<PatternSequenceOverview />} />
+              </Route>
+            </Routes>
+          </div>
+        </HashRouter>
+      </AdaptiveLearningProvider>
     </AppProvider>
   );
 }

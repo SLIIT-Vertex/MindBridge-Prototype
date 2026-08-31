@@ -44,7 +44,7 @@ export default function Progress() {
                 <p className="text-[11px] font-semibold text-ink-soft mt-1.5">{f.note}</p>
               </div>
               <button
-                onClick={() => navigate('/worlds')}
+                onClick={() => navigate('/learn')}
                 className="flex-shrink-0 bg-primary text-white font-display font-bold text-[11px] rounded-full px-3.5 py-2.5"
               >
                 Practice
